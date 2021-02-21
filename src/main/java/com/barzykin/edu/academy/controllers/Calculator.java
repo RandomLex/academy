@@ -17,7 +17,7 @@ public class Calculator extends AbstractServlet {
 
         PrintWriter writer = resp.getWriter();
 
-        writer.write("<p><span style='color: blue;'>");
+        writer.write("<p><span style='color: red;'>");
         writer.write("Сумма: " + x + " + " + y + " = " + sum);
         writer.write("</span></p>");
     }
