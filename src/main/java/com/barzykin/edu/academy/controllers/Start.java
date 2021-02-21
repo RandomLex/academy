@@ -17,6 +17,9 @@ public class Start extends AbstractServlet {
         int sum = x + y;
 
         PrintWriter writer = resp.getWriter();
+
+        writer.write("<p><span style='color: blue;'>");
         writer.write("Сумма: " + x + " + " + y + " = " + sum);
+        writer.write("</span></p>");
     }
 }
