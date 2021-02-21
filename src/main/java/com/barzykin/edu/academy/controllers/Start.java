@@ -7,13 +7,16 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-public class Start extends HttpServlet {
+public class Start extends AbstractServlet {
     @Override
-    protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        super.doGet(req, resp);
+
         int x = Integer.parseInt(req.getParameter("x"));
         int y = Integer.parseInt(req.getParameter("y"));
         int sum = x + y;
+
         PrintWriter writer = resp.getWriter();
-        writer.write("Sum: " + x + " + " + y + " = " + sum);
+        writer.write("Сумма: " + x + " + " + y + " = " + sum);
     }
 }
