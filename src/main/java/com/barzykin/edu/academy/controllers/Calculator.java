@@ -1,16 +1,15 @@
 package com.barzykin.edu.academy.controllers;
 
-import javax.servlet.*;
-import javax.servlet.http.HttpServlet;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-public class Start extends AbstractServlet {
+public class Calculator extends AbstractServlet {
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doGet(req, resp);
+    protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        super.service(req, resp);
 
         int x = Integer.parseInt(req.getParameter("x"));
         int y = Integer.parseInt(req.getParameter("y"));
@@ -22,4 +21,5 @@ public class Start extends AbstractServlet {
         writer.write("Сумма: " + x + " + " + y + " = " + sum);
         writer.write("</span></p>");
     }
+
 }

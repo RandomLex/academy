@@ -8,9 +8,13 @@ import java.io.IOException;
 
 public abstract class AbstractServlet extends HttpServlet {
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        setUtf8(resp);
+    }
+
+    private void setUtf8(HttpServletResponse resp) {
         resp.setContentType("text/html");
         resp.setCharacterEncoding("UTF-8");
-
     }
+
 }
