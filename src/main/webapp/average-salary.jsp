@@ -9,23 +9,10 @@
   </head>
 
   <body>
-    <%
-                List<Teacher> teachers = List.of(
-                                new Teacher(1, "Alex", 1000),
-                                new Teacher(2, "Roman", 2000));
-
-                int average = 0;
-                for (Teacher teacher : teachers) {
-                    average += teacher.getSalary();
-                }
-                average /= teachers.size();
-
-                out.write("<p><span style='color: blue;'>Средняя зарплата следующих преподавателей: "
-                        + average
-                        + "</span></p>");
-                for (Teacher teacher : teachers) {
-                    out.write(teacher + "<br>");
-                }
+    <%= "<p><span style='color: blue;'>Средняя зарплата следующих преподавателей: "
+                + session.getAttribute("average")
+                + "</span></p>"
     %>
+    <%= session.getAttribute("teachers") %>
   </body>
 </html>

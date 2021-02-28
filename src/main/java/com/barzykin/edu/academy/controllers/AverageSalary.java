@@ -2,11 +2,12 @@ package com.barzykin.edu.academy.controllers;
 
 import com.barzykin.edu.academy.model.Teacher;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 
 public class AverageSalary extends AbstractServlet {
@@ -19,22 +20,22 @@ public class AverageSalary extends AbstractServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        int average = getAverage(teachers);
+        HttpSession session = req.getSession(true);
+        session.setAttribute("average", average);
+        session.setAttribute("teachers", teachers);
+
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("/average-salary.jsp");
+        requestDispatcher.forward(req, resp);
+    }
+
+    private int getAverage(List<Teacher> teachers) {
         int average = 0;
         for (Teacher teacher : teachers) {
             average += teacher.getSalary();
         }
         average /= teachers.size();
-
-        PrintWriter writer = resp.getWriter();
-        writer.write("<p><span style='color: blue;'>Средняя зарплата следующих преподавателей: "
-                + average
-                + "</span></p>");
-        for (Teacher teacher : teachers) {
-            writer.write(teacher + "<br>");
-        }
-
-
-
+        return average;
     }
 
     private List<Teacher> initModel() {
