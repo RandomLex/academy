@@ -10,6 +10,26 @@
     <servlet-class>com.barzykin.edu.academy.controllers.Calculator</servlet-class>
   </servlet>
 
+  <servlet>
+    <servlet-name>AverageSalary</servlet-name>
+    <servlet-class>com.barzykin.edu.academy.controllers.AverageSalary</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>Average</servlet-name>
+    <jsp-file>/average-salary.jsp</jsp-file>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>Average</servlet-name>
+    <url-pattern>/average-salary.jsp</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>AverageSalary</servlet-name>
+    <url-pattern>/average</url-pattern>
+  </servlet-mapping>
+
   <servlet-mapping>
     <servlet-name>CalculatorServlet</servlet-name>
     <url-pattern>/calc/*</url-pattern>
